@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Countdown</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+
+        .container {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        #countdown {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ffd700;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            transition: font-size 1s ease;
+        }
+
+        .message {
+            font-size: 3rem;
+            color: #28a745;
+            font-weight: bold;
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeIn 1.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .countdown-animation {
+            animation: countdownAnim 1s infinite;
+        }
+
+        @keyframes countdownAnim {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .final-countdown {
+            font-size: 5rem; /* Increased size after countdown */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 Countdown to Midnight! 🎉</h1>
+        <div id="countdown" class="countdown-animation">10</div>
+    </div>
+
+    <script>
+        let countdown = 10; // Starting countdown value in seconds
+        const countdownElement = document.getElementById('countdown');
+
+        const interval = setInterval(() => {
+            if (countdown >= 0) {
+                countdownElement.textContent = countdown + " seconds remaining";
+                countdown--;
+            } else {
+                clearInterval(interval);
+                countdownElement.textContent = "🎂 Happy Birthday, Zaid! 🎂";
+                countdownElement.classList.add('final-countdown'); // Increase size
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
